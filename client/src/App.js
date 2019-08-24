@@ -3,16 +3,16 @@ import './App.css';
 import axios from 'axios';
 
 function App() {
-  const [dogs, getDogs] = useState([]);
+  const [dogs, setDogs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   useEffect(()=>{
     axios.get("http://localhost:5000/api/visitors/dogs")
     .then(res=>{
-      getDogs(res.data)
+      setDogs(res.data) 
       setIsLoading(false)
     })
     .catch(err=>console.log(err))
-  })
+  },[])
   return (
     <div className="App">
       {isLoading?
