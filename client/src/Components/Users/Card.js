@@ -1,9 +1,16 @@
 import React from 'react'
+import {withRouter} from 'react-router-dom'
 
-export default function Card(props) {
+function Card(props) {
+
     return (
         <div>
-            {props.dog.name}
+            {props.item.name}
+            {props.dogMode?
+                <button onClick={()=>{props.history.push(`/dog/${props.item.id}`)}}>Learn More</button>
+            : <button onClick={()=>{props.history.push(`/kennel/${props.item.id}`)}}>Learn More</button>
+            }
         </div>
     )
 }
+export default withRouter(Card)

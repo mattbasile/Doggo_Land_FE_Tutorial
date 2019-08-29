@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import HeroImg from "../media/hero_img.jpg"
 // import Card Section
 import CardSection from "../Components/Users/CardSection"
@@ -9,6 +9,7 @@ export default function LandingPage(props) {
         backgroundSize: 'cover',
         height: '650px'
     }
+    const [dogMode, setDogMode] = useState(true)
     return (
         <section >
            {/* Header */}
@@ -24,12 +25,17 @@ export default function LandingPage(props) {
            {/* Dog | Kennel Toggle */}
             <div className="h-24 bg-blue-700 text-white title-font ">
                 <div className="h-24 flex text-5xl w-4/5 items-center justify-around mx-auto">
-                    <p>Dogs</p>
-                    <p>Kennels</p>
+                    <p onClick={()=>{setDogMode(true)}}>Dogs</p>
+                    <p onClick={()=>{setDogMode(false)}}>Kennels</p>
                 </div>
             </div>
            {/* Card Section -> Cards */}
-            <CardSection dogs={props.dogs}/>
+            {
+            dogMode? 
+            <CardSection items={props.dogs} dogMode={dogMode}/>
+            :
+            <CardSection items={props.kennels} dogMode={dogMode}/>
+            }
            {/* Filter */}
         </section>
     )

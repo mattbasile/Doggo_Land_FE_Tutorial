@@ -4,8 +4,8 @@ import Card from './Card'
 export default function CardSection(props) {
     return (
         <section>
-            {props.dogs.map(dog=>{
-                return <Card key={dog.id} dog={dog}/>
+            {props.items.map(item=>{
+                return <Card key={item.id} item={item} dogMode={props.dogMode}/>
             })}
         </section>
     )
