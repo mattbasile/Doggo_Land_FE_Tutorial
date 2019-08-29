@@ -2,7 +2,6 @@ import React from 'react'
 import {withRouter} from 'react-router-dom'
 
 function Card(props) {
-
     return (
         <div>
             {props.item.name}
