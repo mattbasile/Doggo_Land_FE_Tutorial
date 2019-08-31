@@ -18,7 +18,7 @@ export default function DogFilter(props) {
     return (
         <section>
             {current_items.map((item,i)=>{
-                return<><input onChange={(e)=>props.handleSelection(e)}key={i} type="checkbox" value={item} /><label>{item}</label></>
+                return<><input onChange={(e)=>props.handleSelection(e)} key={i} type="checkbox" value={item} name={props.type}/><label>{item}</label></>
             })}
         </section>
     )

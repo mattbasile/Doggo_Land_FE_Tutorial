@@ -12,7 +12,7 @@ export default function LandingPage(props) {
         height: '650px'
     }
     const [dogMode, setDogMode] = useState(true);
-    const [selectedFilters, setSelectedFilter] = useState([]);
+    const [selectedFilters, setSelectedFilter] = useState({location: '', age: '', breed:''});
     const [showFilter, setShowFilter] = useState(false);
 
     // arrayRemove Function from -> https://love2dev.com/blog/javascript-remove-from-array/
@@ -23,10 +23,18 @@ export default function LandingPage(props) {
         setSelectedFilter(text);
      }
     const handleSelection =(e)=>{
-        if(selectedFilters.includes(e.target.value)){
-            arrayRemove(selectedFilters, e.target.value);
-        }else{
-            setSelectedFilter([...selectedFilters, e.target.value]);
+        let key = e.target.name;
+        let value = e.target.value;
+        if(selectedFilters[key]){
+            if(selectedFilters.key===value){
+               setSelectedFilter(prev => ({...prev, [key]: ""}))
+            }
+            else{
+               setSelectedFilter(prev => ({...prev, [key]:[selectedFilters[key], value]}))
+            }
+        }
+        else{
+            setSelectedFilter(prev => ({...prev, [key]: value}))
         }
     }
     const toggleFilter = (e)=>{
@@ -58,20 +66,22 @@ export default function LandingPage(props) {
             - Get Locations from Kennels
             - If location is selected use their dog array for the cardSection
         */}
-            <button onClick={(e)=>{toggleFilter(e)}}>Filter</button>
+            <button className="text-lg font-semibold body-font" onClick={(e)=>{toggleFilter(e)}}>Filter</button>
             {showFilter?
-                <section >
-                    <div>
-                      <p>Location</p>
-                      <DogFilter items={props.kennels.map(kennel=>kennel.location)} type={"location"} handleSelection={handleSelection}/>
-                    </div>
-                    <div>
-                      <p>Age</p>
-                      <DogFilter items={props.dogs.map(dog=>dog.Age)} type={"age"} handleSelection={handleSelection}/>
-                    </div>
-                    <div>
-                      <p>Breed</p>
-                      <DogFilter items={props.dogs.map(dog=>dog.breeds)} type={"breed"} handleSelection={handleSelection}/>
+                <section className="" >
+                    <div className="flex">
+                        <div>
+                        <p>Location</p>
+                        <DogFilter items={props.kennels.map(kennel=>kennel.location)} type={"location"} handleSelection={handleSelection}/>
+                        </div>
+                        <div>
+                        <p>Age</p>
+                        <DogFilter items={props.dogs.map(dog=>dog.Age)} type={"age"} handleSelection={handleSelection}/>
+                        </div>
+                        <div>
+                        <p>Breed</p>
+                        <DogFilter items={props.dogs.map(dog=>dog.breeds)} type={"breed"} handleSelection={handleSelection}/>
+                        </div>
                     </div>
                     <button>Submit Search</button>
                 </section>

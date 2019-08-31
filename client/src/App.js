@@ -36,6 +36,17 @@ export default function App() {
     })
     .catch(err=>console.log(err))
   },[])
+  const filterItems = (filter, values) =>{
+    if(filter === "location"){
+      const filtered_locations = kennels.filter(kennel=>{
+        if(kennel.location===filter){
+          return kennel.dogs
+        }
+        setKennels(filtered_locations);
+      });
+    }
+    else if(filter ){}
+  }
   return (
     <section className="App">
       <Navigation/>
