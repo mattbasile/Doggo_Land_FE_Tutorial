@@ -12,7 +12,7 @@ export default function LandingPage(props) {
         height: '650px'
     }
     const [dogMode, setDogMode] = useState(true);
-    const [selectedFilters, setSelectedFilter] = useState({location: '', age: '', breed:''});
+    const [selectedFilters, setSelectedFilter] = useState({location: [], age: [], breed:[]});
     const [showFilter, setShowFilter] = useState(false);
 
     // arrayRemove Function from -> https://love2dev.com/blog/javascript-remove-from-array/
@@ -26,11 +26,16 @@ export default function LandingPage(props) {
         let key = e.target.name;
         let value = e.target.value;
         if(selectedFilters[key]){
-            if(selectedFilters.key===value){
-               setSelectedFilter(prev => ({...prev, [key]: ""}))
+            console.log(typeof selectedFilters[key])
+            if(selectedFilters[key].includes(value)){
+               let reset = selectedFilters[key].filter(val=>val!==value);
+               setSelectedFilter(prev => ({...prev, [key]: reset}));
             }
             else{
-               setSelectedFilter(prev => ({...prev, [key]:[selectedFilters[key], value]}))
+               console.log(selectedFilters[key])
+               let new_array = [...selectedFilters[key], value];
+               console.log(selectedFilters[key], new_array)
+               setSelectedFilter(prev => ({...prev, [key]: new_array}));
             }
         }
         else{
