@@ -43,7 +43,6 @@ export default function App() {
       return;
     }
     // If the location key array has a length greater than 1
-    console.log(filterObject["location"].length)
     if(filterObject["location"].length >= 1){
       let location_array = filterObject["location"];
       // Loop over the location array
@@ -53,20 +52,19 @@ export default function App() {
           if(kennel.location===location_array[i]){
             return kennel.dogs
         }});
-      console.log(new_dogs)
         filtered_dogs = [...filtered_dogs, new_dogs[0].dogs];
-        console.log(filtered_dogs)
       };
-      console.log(dog_copy)
       dog_copy = filtered_dogs.flatMap(dog=>dog);
     }
-    console.log(dog_copy);
     if(filterObject["age"].length >= 1){
       let age_array = filterObject["age"];
+      console.log(age_array);
       let filtered_dogs = []
-      for(let i =0; i<age_array; i++){
+      for(let i=0; i<age_array.length; i++){
+        console.log(age_array[i])
         if(age_array[i]==="Puppy"){
           let puppies = dog_copy.filter(dog=>dog.Age<5);
+          console.log(puppies);
           filtered_dogs = [...filtered_dogs, puppies]
         }
         else if(age_array[i]==="Dog"){
@@ -78,21 +76,24 @@ export default function App() {
           filtered_dogs = [...filtered_dogs, oldies]
         }
       }
-      dog_copy = filtered_dogs;
-      console.log(dog_copy)
+      dog_copy = filtered_dogs.flatMap(dog=>dog);
     }
     if(filterObject["breed"].length >= 1){
       let breed_array = filterObject["breed"];
+      console.log(breed_array);
       let filtered_dogs = [];
-      for(let i =0; i<breed_array; i++){
-        let new_dogs = dog_copy.filter(dog=>{
-          return dog.breeds.filter(breed=>{
-            if(breed = breed_array[i]);{
-              return breed
+      for(let i =0; i<breed_array.length; i++){
+        // breed_array[i] === filtered breed;
+        /*
+        Find the dogs who have the breed breed_array[i];
+        */
+        for(let j = 0; j<dog_copy.length; j++){
+          for(let k =0; k<dog_copy[j].breeds.length; k++){
+            if(dog_copy[j].breeds[k]===breed_array[i]){
+              filtered_dogs.push(dog_copy[j])
             }
-          })
-        })
-        filtered_dogs = [...filtered_dogs, new_dogs];
+          }
+        }
       }
       dog_copy = filtered_dogs;
       console.log(dog_copy)
