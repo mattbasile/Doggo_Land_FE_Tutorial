@@ -26,15 +26,12 @@ export default function LandingPage(props) {
         let key = e.target.name;
         let value = e.target.value;
         if(selectedFilters[key]){
-            console.log(typeof selectedFilters[key])
             if(selectedFilters[key].includes(value)){
                let reset = selectedFilters[key].filter(val=>val!==value);
                setSelectedFilter(prev => ({...prev, [key]: reset}));
             }
             else{
-               console.log(selectedFilters[key])
                let new_array = [...selectedFilters[key], value];
-               console.log(selectedFilters[key], new_array)
                setSelectedFilter(prev => ({...prev, [key]: new_array}));
             }
         }
@@ -45,6 +42,11 @@ export default function LandingPage(props) {
     const toggleFilter = (e)=>{
         e.preventDefault();
         setShowFilter(!showFilter);
+    }
+    const SubmitFilter = (e)=>{
+        e.preventDefault();
+        props.handleFilter(selectedFilters);
+        toggleFilter(e);
     }
     return (
         <section >
@@ -88,7 +90,7 @@ export default function LandingPage(props) {
                         <DogFilter items={props.dogs.map(dog=>dog.breeds)} type={"breed"} handleSelection={handleSelection}/>
                         </div>
                     </div>
-                    <button>Submit Search</button>
+                    <button onClick={(e)=>SubmitFilter(e)}>Submit Search</button>
                 </section>
                 : null
             }
