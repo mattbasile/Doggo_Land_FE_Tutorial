@@ -21,23 +21,35 @@ export default function App() {
   // Retrieve our Dogs and Kennels from the backend
   const [dogs, setDogs] = useState([]);
   const [kennels, setKennels] = useState([]);
+  const [dogsCopy, setDogsCopy] = useState([]);
+  const [kennelsCopy, setKennelsCopy] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  useEffect(()=>{
-    axios.get("http://localhost:5000/api/visitors/dogs")
+  const getDogs = async ()=>{
+   await axios.get("http://localhost:5000/api/visitors/dogs")
     .then(res=>{
       setDogs(res.data) 
+      setDogsCopy(res.data) 
       setIsLoading(false)
     })
     .catch(err=>console.log(err))
-    axios.get("http://localhost:5000/api/visitors/kennels")
+  }
+  const getKennels = async () =>{
+    await axios.get("http://localhost:5000/api/visitors/kennels")
     .then(res=>{
       setKennels(res.data) 
+      setKennelsCopy(res.data) 
       setIsLoading(false)
     })
     .catch(err=>console.log(err))
+  }
+  useEffect(()=>{
+    getDogs();
+    getKennels();
   },[])
-  const handleFilter = (filterObject) =>{
-    const kennel_copy = kennels;
+  const handleFilter = async (filterObject) =>{
+    await getKennels();
+    await getDogs();
+    const kennel_copy =  kennels;
     let dog_copy = dogs;
     if(!filterObject){
       return;
@@ -106,22 +118,11 @@ export default function App() {
     }
   }
 
-  const filterItems = (filter, values) =>{
-    if(filter === "location"){
-      const filtered_locations = kennels.filter(kennel=>{
-        if(kennel.location===filter){
-          return kennel.dogs
-        }
-        setKennels(filtered_locations);
-      });
-    }
-    else if(filter ){}
-  }
   return (
     <section className="App">
       <Navigation/>
         <Switch>
-          <Route exact path="/" component={()=><LandingPage dogs={dogs} kennels={kennels} handleFilter={handleFilter}/>}></Route>
+          <Route exact path="/" component={()=><LandingPage dogs={dogs} kennels={kennels} handleFilter={handleFilter} kennelsCopy={kennelsCopy} dogsCopy={dogsCopy}/>}></Route>
           <Route path="/dog/:id" component={()=><DogPage dogs={dogs}/>}></Route>
           <Route path="/kennel/:id" component={()=><KennelPage kennels={kennels}/>}></Route>
           {/* Admin Routes */}
