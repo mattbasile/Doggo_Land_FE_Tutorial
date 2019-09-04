@@ -15,14 +15,6 @@ export default function LandingPage(props) {
     const [selectedFilters, setSelectedFilter] = useState({location: [], age: [], breed:[]});
     const [showFilter, setShowFilter] = useState(false);
     
-    
-    // arrayRemove Function from -> https://love2dev.com/blog/javascript-remove-from-array/
-    function arrayRemove(arr, value) {
-        let text = arr.filter(function(ele){
-            return ele != value;
-        });
-        setSelectedFilter(text);
-     }
     const handleSelection =(e)=>{
         let key = e.target.name;
         let value = e.target.value;
@@ -76,22 +68,29 @@ export default function LandingPage(props) {
                     <p className="ml-1  font-semibold body-font">Filter</p>
                 </div>
                 {showFilter?
-                    <section className="bg-grey-300" >
-                        <div className="flex">
-                            <div>
-                            <p>Location</p>
-                            <DogFilter items={props.kennelsCopy.map(kennel=>kennel.location)} type={"location"} handleSelection={handleSelection}/>
+                    <section className=" bg-white modal" >
+                        <h5 className="text-center text-white w-100 py-3 bg-blue-700 rounded rounded-b-none text-3xl font-semibold">Filter</h5>
+                        <div className="flex justify-around my-4 ">
+                            <div className="flex flex-wrap w-100 flex-col">
+                                <p className="text-blue-700 text-center underline text-2xl font-semibold">Location</p>
+                                <DogFilter items={props.kennelsCopy.map(kennel=>kennel.location)} type={"location"} handleSelection={handleSelection}/>
                             </div>
-                            <div>
-                            <p>Age</p>
-                            <DogFilter items={props.dogsCopy.map(dog=>dog.Age)} type={"age"} handleSelection={handleSelection}/>
+                            <div className="flex flex-wrap w-100 flex-col">
+                                <p className="text-blue-700 text-center underline text-2xl font-semibold">Age</p>
+                                <DogFilter items={props.dogsCopy.map(dog=>dog.Age)} type={"age"} handleSelection={handleSelection}/>
                             </div>
-                            <div>
-                            <p>Breed</p>
-                            <DogFilter items={props.dogsCopy.map(dog=>dog.breeds)} type={"breed"} handleSelection={handleSelection}/>
+                            <div className="flex flex-wrap w-100 flex-col">
+                                <p className="text-blue-700 text-center underline text-2xl font-semibold">Breed</p>
+                                <DogFilter items={props.dogsCopy.map(dog=>dog.breeds)} type={"breed"} handleSelection={handleSelection}/>
                             </div>
                         </div>
-                        <button onClick={(e)=>SubmitFilter(e)}>Submit Search</button>
+                        <div className="py-3 bg-blue-700 rounded rounded-t-none flex justify-center items-center">
+                            <button className="py-2 px-3 font-semibold text-green-900 text-lg bg-green-400 hover:bg-green-200 rounded" onClick={(e)=>SubmitFilter(e)}>Submit Search</button>
+                            <button className="ml-4 py-2 px-3 font-semibold text-red-900 text-lg bg-red-400 hover:bg-red-200 rounded" onClick={()=>{setShowFilter(false)
+                            setSelectedFilter({
+                                location: [], age: [], breed:[]
+                            })}}>Close</button>
+                        </div>
                     </section>
                     : null
                 }

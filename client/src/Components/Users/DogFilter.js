@@ -16,10 +16,10 @@ export default function DogFilter(props) {
     }, [])
    
     return (
-        <section className="">
+        <>
             {current_items.map((item,i)=>{
-                return<><input onChange={(e)=>props.handleSelection(e)} key={i} type="checkbox" value={item} name={props.type}/><label>{item}</label></>
+                return<div className="w-100 my-4 flex items-center"><input onChange={(e)=>props.handleSelection(e)} key={i} type="checkbox" value={item} name={props.type}/><label className="ml-2 text-lg">{item}</label></div>
             })}
-        </section>
+       </>
     )
 }

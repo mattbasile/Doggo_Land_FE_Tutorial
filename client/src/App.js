@@ -80,11 +80,12 @@ export default function App() {
           filtered_dogs = [...filtered_dogs, puppies]
         }
         else if(age_array[i]==="Dog"){
-          let doggies = dog_copy.filter(dog=>dog.Age<10);
+          let doggies = dog_copy.filter(dog=>dog.Age<10&&dog.Age>=5);
           filtered_dogs = [...filtered_dogs, doggies]
         }
         else{
-          let oldies = dog_copy.filter(dog=>dog.Age>10);
+          
+          let oldies = dog_copy.filter(dog=>dog.Age>=10);
           filtered_dogs = [...filtered_dogs, oldies]
         }
       }
