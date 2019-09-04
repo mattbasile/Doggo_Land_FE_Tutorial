@@ -69,7 +69,7 @@ export default function LandingPage(props) {
                 </div>
                 {showFilter?
                     <section className=" bg-white modal" >
-                        <h5 className="text-center text-white w-100 py-3 bg-blue-700 rounded rounded-b-none text-3xl font-semibold">Filter</h5>
+                        <h5 className="text-center text-blue-700 w-100 py-3 bg-gray-300 rounded rounded-b-none text-3xl font-semibold">Filter</h5>
                         <div className="flex justify-around my-4 ">
                             <div className="flex flex-wrap w-100 flex-col">
                                 <p className="text-blue-700 text-center underline text-2xl font-semibold">Location</p>
@@ -84,7 +84,7 @@ export default function LandingPage(props) {
                                 <DogFilter items={props.dogsCopy.map(dog=>dog.breeds)} type={"breed"} handleSelection={handleSelection}/>
                             </div>
                         </div>
-                        <div className="py-3 bg-blue-700 rounded rounded-t-none flex justify-center items-center">
+                        <div className="py-3 bg-gray-300 rounded rounded-t-none flex justify-center items-center">
                             <button className="py-2 px-3 font-semibold text-green-900 text-lg bg-green-400 hover:bg-green-200 rounded" onClick={(e)=>SubmitFilter(e)}>Submit Search</button>
                             <button className="ml-4 py-2 px-3 font-semibold text-red-900 text-lg bg-red-400 hover:bg-red-200 rounded" onClick={()=>{setShowFilter(false)
                             setSelectedFilter({
