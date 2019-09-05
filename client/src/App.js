@@ -121,12 +121,12 @@ export default function App() {
   }
 
   return (
-    <section className="App">
+    <section className="App bg-blue-100">
       <Navigation/>
         <Switch>
           <Route exact path="/" component={()=><LandingPage dogs={dogs} kennels={kennels} handleFilter={handleFilter} kennelsCopy={kennelsCopy} dogsCopy={dogsCopy}/>}></Route>
-          <Route path="/dog/:id" component={()=><DogPage dogs={dogs} kennels={kennels} isLoading={isLoading}/>}></Route>
-          <Route path="/kennel/:id" component={()=><KennelPage kennels={kennels} dogs={dogs} isLoading={isLoading}/>}></Route>
+          <Route path="/dog/:id" component={()=><DogPage dogs={dogs} kennels={kennels} />}></Route>
+          <Route path="/kennel/:id" component={()=><KennelPage kennels={kennels} dogs={dogs} />}></Route>
           {/* Admin Routes */}
           <Route path="/login" component={LoginPage}></Route>
           <Route path="/dashboard/:id" component={AdminDashPage} ></Route>

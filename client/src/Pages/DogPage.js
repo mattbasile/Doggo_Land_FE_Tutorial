@@ -38,7 +38,7 @@ function DogPage(props) {
             :
                 <section className="flex h-screen">
                     <div style={image_styles} className="w-3/5"></div>
-                    <div className="p-12 w-2/5 flex flex-col justify-center">
+                    <div className="p-12 w-2/5 flex flex-col justify-center bg-white">
                         <h2 className="body-font text-5xl font-bold body-font dog-title">{currentDog.name}</h2>
                         <p className="py-4 pr-4 leading-loose">
                          {currentDog.bio}
