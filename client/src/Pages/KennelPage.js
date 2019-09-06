@@ -62,7 +62,7 @@ function KennelPage(props) {
             <section className="w-full h-24 title-font text-5xl text-white bg-blue-700 text-center py-4 mb-2">
                 <h2 className="m-0">Our Dogs</h2>
             </section>
-            {currentKennel.length>0?<CardSection id="dogs" items={currentKennel.dogs} dogMode={true}/>:<h3 className="text-center text-5xl title-font my-16">Sorry, we have no dogs currently ☹️ Please check back soon!</h3>}
+            {currentKennel.dogs.length>0?<CardSection id="dogs" items={currentKennel.dogs} dogMode={true}/>:<h3 className="text-center text-5xl title-font my-16">Sorry, we have no dogs currently ☹️ Please check back soon!</h3>}
         </section>
         }
         </>
