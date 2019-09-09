@@ -8,6 +8,7 @@ import {Route, withRouter} from 'react-router-dom'
 import LandingPage from "./Pages/LandingPage"
 import DogPage from "./Pages/DogPage"
 import KennelPage from "./Pages/KennelPage"
+import AboutPage from "./Pages/AboutPage"
 // Admin Pages
 import LoginPage from "./Pages/LoginPage"
 import AdminDashPage from "./Pages/AdminDashPage"
@@ -127,6 +128,7 @@ export default function App() {
           <Route exact path="/" component={()=><LandingPage dogs={dogs} kennels={kennels} handleFilter={handleFilter} kennelsCopy={kennelsCopy} dogsCopy={dogsCopy}/>}></Route>
           <Route path="/dog/:id" component={()=><DogPage dogs={dogs} kennels={kennels} />}></Route>
           <Route path="/kennel/:id" component={()=><KennelPage kennels={kennels} dogs={dogs} />}></Route>
+          <Route path="/about" component={AboutPage}></Route>
           {/* Admin Routes */}
           <Route path="/login" component={LoginPage}></Route>
           <Route path="/dashboard/:id" component={AdminDashPage} ></Route>

@@ -9,7 +9,7 @@ export default function Navigation() {
             <div className="flex w-2/5 justify-around">
                 <Link className="hover:underline" to="/#dogs">Dogs</Link>
                 <Link className="hover:underline" to="/#kennels">Kennels</Link>
-                <Link className="hover:underline" to="/#kennels">About</Link>
+                <Link className="hover:underline" to="/about">About</Link>
             </div>
             <Link className="px-6 py-2 rounded-lg bg-green-600 hover:bg-green-700" to="/login">Admin</Link>
         </nav>
