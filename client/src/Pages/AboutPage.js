@@ -13,13 +13,13 @@ export default function AboutPage() {
         <section className="flex h-screen">
         <div style={image_styles} className="w-3/5"></div>
         <div className="p-12 w-2/5 flex flex-col bg-white">
-            <h2 className="text-4xl text-semibold body-font">Welcome to Doggo Land!</h2>
+            <h2 className="text-4xl font-semibold body-font">Welcome to Doggo Land!</h2>
             <p className="my-4">
-                This site was create as part of a 7 article series to help beginners learn to make a fullstack application with Javascript!
-                Using Node, Express and Knex on the backend and React and TailwindCSS on the frontend, we've created a fun application that followers can share a valued portfolio piece.
+                This site was the product of a 7 part series to help beginning developers learn to make a fullstack application with Javascript!
+                Using Node, Express and Knex on the backend and React and TailwindCSS on the frontend, we've created a fun application that followers can share as a valued portfolio piece.
             </p>
-            <p className="my-4">
-                If this your first time viewing this, to follow the links below to find this projects Github, both front and backend, and Links to the medium Articles!
+            <p className="my-2">
+                If this your first time viewing this, follow the links below to find this projects Github, both front and backend, and links to the Medium Articles!
             </p>
             <div className="my-4">
                 <h2 className="text-2xl font-bold">
@@ -41,11 +41,11 @@ export default function AboutPage() {
                     Github:
                 </h2>
                 <div className="flex w-full flex-wrap">
-                    <a href="" className=" bg-blue-700 text-white font-semibold hover:bg-blue-900 mx-2 mt-2 py-1 px-3 rounded">Frontend</a>
-                    <a href="" className=" bg-blue-700 text-white font-semibold hover:bg-blue-900 mx-2 mt-2 py-1 px-3 rounded">Backend</a>
+                    <a href="https://github.com/mattbasile/Doggo_Land_FE_Tutorial" className=" bg-blue-700 text-white font-semibold hover:bg-blue-900 mx-2 mt-2 py-1 px-3 rounded">Frontend</a>
+                    <a href="https://github.com/mattbasile/Doggo_Land" className=" bg-blue-700 text-white font-semibold hover:bg-blue-900 mx-2 mt-2 py-1 px-3 rounded">Backend</a>
                 </div>
             </div>
-            <p className="text-md font-light text-center my-8">Also, that's my dog Sophia to the left, she's an good doggo!</p>
+            <p className="text-md font-light text-center my-8">Also, that's my dog Sophia to the left, she's an good doggo and supports this content!</p>
         </div> 
     </section>
     )
