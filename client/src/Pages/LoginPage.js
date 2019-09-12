@@ -1,6 +1,8 @@
 import React,{useState} from 'react'
+import {withRouter} from "react-router-dom";
 import Doggo from "../media/shep.jpg"
-export default function LoginPage() {
+
+function LoginPage(props) {
     const [registerView, setRegisterView ] = useState(false);
     const dog_img ={
             background:`lightblue url(${Doggo}) no-repeat center center`,
@@ -28,7 +30,7 @@ export default function LoginPage() {
                 <label className=" px-16 block text-blue-900 text-sm font-semibold mb-2 ">Password:</label>
                 <input name="password" className="mx-16 rounded p-2 mb-6 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="password"/>
                 <p onClick={()=>setRegisterView(true)} className="cursor-pointer text-center underline italic font-medium text-xl text-blue-900 hover:text-blue-700">Need to Register?</p>
-                <button className="bg-white px-16 mt-8 text-2xl font-bold py-1 rounded mx-auto text-blue-900 hover:text-white hover:bg-blue-900">Submit</button>
+                <button onClick={()=>props.history.push("/dashboard/1")}className="bg-white px-16 mt-8 text-2xl font-bold py-1 rounded mx-auto text-blue-900 hover:text-white hover:bg-blue-900">Submit</button>
             </form>
             :
             (<form className=" w-1/2 flex flex-col ">
@@ -41,9 +43,10 @@ export default function LoginPage() {
                 <label className=" px-16 block text-blue-900 text-sm font-semibold mb-2 ">Kennel Name:</label>
                 <input name="kennel_name" className="mx-16 rounded p-2 mb-6 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text"/>
                 <p onClick={()=>setRegisterView(false)} className="cursor-pointer text-center underline italic font-medium text-xl text-blue-900 hover:text-blue-700">Already Registered?</p>
-                <button className="bg-white px-16 mt-8 text-2xl font-bold py-1 rounded mx-auto text-blue-900 hover:text-white hover:bg-blue-900">Register</button>
+                <button  onClick={()=>props.history.push("/dashboard/1")} className="bg-white px-16 mt-8 text-2xl font-bold py-1 rounded mx-auto text-blue-900 hover:text-white hover:bg-blue-900">Register</button>
             </form>)
             }
     </section>
     )
 }
+export default withRouter(LoginPage)
